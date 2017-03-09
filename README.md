@@ -4,7 +4,7 @@
 @Email:  hao@genm.co
 @Project: GenmMobile
 @Last modified by:   clovemac
-@Last modified time: 2017-03-08T23:24:36-05:00
+@Last modified time: 2017-03-09T17:14:49-05:00
 -->
 
 
@@ -29,15 +29,7 @@ We build on the shoulders of giants with the following technologies:
 * [fetch](https://github.com/github/fetch) A window.fetch JavaScript polyfill
 * [tcomb form](https://github.com/gcanti/tcomb-form) Forms library for react
 * [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader)to allow import of stylesheets in plain css, sass and less,
-* [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize FontAwesome
-* [bootstrap-loader](https://github.com/shakacode/bootstrap-loader) to customize Bootstrap
 * [ESLint](http://eslint.org), [Airbnb Javascript/React Styleguide](https://github.com/airbnb/javascript), [Airbnb CSS / Sass Styleguide](https://github.com/airbnb/css) to maintain a consistent code style and [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) to make sure all imports are correct
-* [mocha](https://mochajs.org/) to allow writing unit tests for the project
-* [Enzyme](http://airbnb.io/enzyme/) JavaScript Testing utilities for React
-* [redux-mock-store](https://github.com/arnaudbenard/redux-mock-store) a mock store for your testing your redux async action creators and middleware
-* [expect](https://github.com/mjackson/expect) Write better assertions
-* [Nock](https://github.com/pgte/nock) HTTP mocking and expectations library
-* [istanbul](https://github.com/gotwarlost/istanbul) to generate coverage when running mocha
 
 **Backend**
 
