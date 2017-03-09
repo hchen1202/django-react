@@ -1,0 +1,9 @@
+{
+  "name": "django-react",
+  "version": "1.0.0",
+  "description": "Django React",
+  "main": "index.js",
+  "repository": "https://github.com/hchen1202/django-react.git",
+  "author": "Hao Chen <hchen1202@gmail.com>",
+  "license": "MIT"
+}
