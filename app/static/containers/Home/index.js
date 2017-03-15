@@ -2,7 +2,7 @@
  * @Author: Hao 
  * @Date: 2017-03-10 14:49:15 
  * @Last Modified by: Hao
- * @Last Modified time: 2017-03-10 17:26:25
+ * @Last Modified time: 2017-03-14 12:41:13
  */
 
 
@@ -22,7 +22,6 @@ class Home extends React.Component {
     render(){
         return(
             <div>
-                <h1>Home</h1>
                 <h2></h2>
             </div>
         )

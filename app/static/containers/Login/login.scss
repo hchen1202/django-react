@@ -1,0 +1,83 @@
+.bg-auth {
+    background: url('../../images/bg-auth.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    left:0 ;
+    right:0;
+}
+.wrapper {
+    position: relative;
+    padding: 150px 0px;
+    .loginForm{
+        padding: 20px;
+        background: #fff;
+        border-radius: 3px;
+        min-height: 200px;
+        legend {
+            width: 100%;
+            margin-bottom: 18px;
+            font-size: 19.5px;
+            line-height: inherit;
+            border-bottom: 1px solid #e5e5e5;
+            h2 {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 0 0 -1px;
+                line-height: 38px;
+                border-bottom: solid 3px #008df3;
+                display: inline-block;
+            }
+            h4 {
+                font-size: 12px;
+                font-weight: 600;
+                margin: 0 0 -1px;
+                line-height: 38px;
+                color: #008df3;
+                display: inline-block;
+                float: right;
+            }
+        }
+        .form-group {
+            min-width: 100%;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+    }
+    .social-auth{
+        margin-top: 20px;
+        text-align: center;
+        h5 {
+            font-size: 15px;
+        }
+        .items {
+            padding: 20px 0;
+            .item {
+                display: inline-block;
+                margin-right: 50px
+            }
+        }
+        .qr-pc {
+            position: absolute;
+            right: 20px;
+            bottom: 5px;
+            .icon-qr-or-pc {
+                width: 60px;
+                height: 60px;
+                background-position: -135px -135px;
+                cursor: pointer;
+            }
+            .icon-modal {
+                display: inline-block;
+                vertical-align: top;
+                background-image: url('http://statics.huxiu.com/w/mini/static_2015/img/icon_login.png?v=201611219');
+                background-size: 200px 200px;
+                background-repeat: no-repeat;
+                width: 65px;
+                height: 65px;
+            }
+        }
+    }
+    
+}

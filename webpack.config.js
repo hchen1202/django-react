@@ -39,7 +39,7 @@ module.exports = {
 
     path: resolve(__dirname, 'app/dist'),
 
-    publicPath: '/static'
+    publicPath: '/'
     // necessary for HMR to know where to load the hot update chunks
   },
 
@@ -55,7 +55,7 @@ module.exports = {
     contentBase: resolve(__dirname, 'app/static'),
     // match the output path
 
-    publicPath: '/static'
+    publicPath: '/'
     // match the output `publicPath`
   },
   resolve: {
@@ -77,7 +77,11 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      }
+      },
+      {
+          test: /\.jpe?g$|\.gif$|\.png$/,
+          loader: 'file-loader'
+      },
     ]
   },
 
@@ -88,6 +92,14 @@ module.exports = {
 
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
+
+    new HtmlWebpackPlugin({
+            template: resolve(__dirname, 'app/static/index.html'),
+            hash: false,
+            filename: 'index.html',
+            inject: 'body'
+        }),
+    // enable inject js into html
 
   ],
 };
