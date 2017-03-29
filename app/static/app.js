@@ -23,6 +23,10 @@ class App extends React.Component {
         super(props)
     }
 
+    componentWillMount(){
+        console.log('what happen')
+    }
+
     logout = () => {
         //this.props.dispatch(authLogoutAndRedirect());
     };

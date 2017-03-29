@@ -1,8 +1,18 @@
+import uuid
+
+from datetime import timedelta
+
 from django.db import models
+
+from django.utils import timezone
+
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser):
     """
     Model that represents an user.
     To be active, the user must register and confirm his email.
@@ -22,13 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         max_length=30,
         unique=True,
         help_text=_('Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.'),
-        validators=[
-            validators.RegexValidator(
-                r'^[\w.@+-]+$',
-                _('Enter a valid username. This value may contain only letters, numbers and @/./+/-/_ characters.'),
-                'invalid'
-            ),
-        ],
         error_messages={
             'unique': _("A user with that username already exists."),
         }
@@ -38,18 +41,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_MALE)
 
-    confirmed_email = models.BooleanField(default=False)
-
-    is_staff = models.BooleanField(
-        _('staff status'),
-        default=False,
-        help_text=_('Designates whether the user can log into this admin site.')
-    )
-
-    is_active = models.BooleanField(
-        _('active'),
-        default=True,
-        help_text=_('Designates whether this user should be treated as active. '
-                    'Unselect this instead of deleting accounts.')
-    )
+    # A string describing the name of the field on the user model that is used as the unique identifier. 
+    USERNAME_FIELD = 'email'
 
