@@ -10,6 +10,7 @@ from rest_framework.mixins import CreateModelMixin
 # permissions determine whether a request should be granted or denied access. The IsAuthenticated permission class will deny permission to any unauthenticated user, and allow permission otherwise.
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
 
 from accounts.serializers import UserSerializer
 from accounts.serializers import UserRegistrationSerializer, UserSerializer
@@ -19,19 +20,21 @@ from rest_framework_jwt.settings import api_settings
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
+
 # Create your views here.
 
 class UserRegisterView(GenericAPIView) :
-    serializer_class = UserSerializer
-    authentication_classes = (BasicAuthentication)
-    permission_classes = (IsAuthenticated)
+    serializer_class = UserRegistrationSerializer
+    authentication_classes = ()
+
+    """
+    A view that can accept POST requests with JSON content.
+    """
+    #parser_classes = (JSONParser)
 
     def post(self, request):
-        user = self.model.get(username=serializer.data['username'])
-        payload = jwt_payload_handler(user)
-        token = jwt_encode_handler(payload)
-
-        return Response({'token': token[0].key})
+        # User Register View
+        return self.create(request)
 
 
 class UserLoginView(GenericAPIView):

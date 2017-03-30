@@ -12,11 +12,11 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 //const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
-/*
+
     'react-hot-loader/patch',
     // activate HMR for React
 
@@ -26,7 +26,7 @@ module.exports = {
 
     'webpack/hot/only-dev-server',
     // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates*/
+    // only- means to only hot reload for successful updates
 
 
     './index.js',
@@ -43,9 +43,9 @@ module.exports = {
 
   context: resolve(__dirname, 'app/static/'),
 
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
- /* devServer: {
+  devServer: {
 
     hot: true,
     // enable HMR on the server
@@ -55,7 +55,7 @@ module.exports = {
 
     publicPath: '/'
     // match the output `publicPath`
-  },*/
+  },
   resolve: {
      extensions: [' ', '.js', '.jsx']
   },
@@ -85,18 +85,18 @@ module.exports = {
 
   plugins: [
 
-    //new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 
     //new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
 
-    /*new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
             template: resolve(__dirname, 'app/static/index.html'),
             hash: false,
             filename: 'index.html',
             inject: 'body'
-        }),*/
+        }),
     // enable inject js into html
 
   ],

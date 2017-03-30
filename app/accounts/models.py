@@ -39,7 +39,7 @@ class User(AbstractBaseUser):
 
     email = models.EmailField(_('Email address'), unique=True)
 
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_MALE)
+    # gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_MALE)
 
     # A string describing the name of the field on the user model that is used as the unique identifier. 
     USERNAME_FIELD = 'email'

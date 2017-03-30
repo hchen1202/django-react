@@ -13802,13 +13802,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Login = function (_React$Component) {
     _inherits(Login, _React$Component);
 
-    function Login() {
+    function Login(props) {
         _classCallCheck(this, Login);
 
-        return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+        _this.state = {
+            username: null,
+            password: null,
+            email: null
+        };
+        return _this;
     }
 
     _createClass(Login, [{
+        key: 'submit',
+        value: function submit() {
+            fetch('http://127.0.0.1:8000/api/register', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "text/plain"
+                },
+                data: {
+                    username: this.state.username,
+                    password: this.state.password,
+                    email: this.state.email
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (user) {
+                console.log(user);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -13832,7 +13858,7 @@ var Login = function (_React$Component) {
                                     { className: 'loginForm' },
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'form',
-                                        null,
+                                        { type: 'submit' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'legend',
                                             null,
@@ -13855,7 +13881,7 @@ var Login = function (_React$Component) {
                                                 null,
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', null)
                                             ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', placeholder: '\u624B\u673A\u53F7\uFF0F\u90AE\u7BB1' })
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', placeholder: '\u624B\u673A\u53F7\uFF0F\u90AE\u7BB1', value: this.state.email })
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'div',
@@ -13865,7 +13891,17 @@ var Login = function (_React$Component) {
                                                 null,
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', null)
                                             ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', placeholder: '\u5BC6\u7801' })
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', placeholder: '\u7528\u6237\u540D', value: this.state.username })
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'form-group' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'lable',
+                                                null,
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', null)
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', placeholder: '\u5BC6\u7801', value: this.state.password })
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'div',
@@ -13878,7 +13914,7 @@ var Login = function (_React$Component) {
                                         ),
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                             'button',
-                                            { className: 'btn btn-primary btn-block' },
+                                            { className: 'btn btn-primary btn-block', type: 'submit', onClick: '' },
                                             '\u7ACB\u5373\u767B\u5F55'
                                         )
                                     ),

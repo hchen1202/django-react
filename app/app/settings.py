@@ -53,10 +53,15 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    # CORS for REST_FRAMEWORK
+    'corsheaders',
+
     'accounts'
 ]
 
 MIDDLEWARE = [
+    # CORS for REST_FRAMEWORK
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,6 +71,22 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+#CORS Configure
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8080',
+    '127.0.0.1:8000'
+)
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
 
 ROOT_URLCONF = 'app.urls'
 
@@ -87,6 +108,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+#CSRF_COOKIE_NAME = "XCSRF-TOKEN"
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
