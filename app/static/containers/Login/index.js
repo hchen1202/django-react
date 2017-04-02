@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import DjangoCSRFToken from '../../components/djangoCSRFToken'
+import axios from 'axios';
+
+
 import './login.scss';
 
 class Login extends React.Component{
@@ -10,7 +14,8 @@ class Login extends React.Component{
         this.state={
             username: '',
             password: '',
-            email: ''
+            email: '',
+            csrf_token: ''
         }
 
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
@@ -19,23 +24,52 @@ class Login extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillMount(){
+        const csrf_token = this.getCookie('csrftoken')
+        this.setState({
+            csrf_token: csrf_token
+        })
+
+        console.log(csrf_token)
+    }
+
     handleSubmit(){
         console.log('here')
-        fetch('http://127.0.0.1:8000/api/register/',{
-            method: 'POST',
+        axios({
+            url: '/api/register/',
+            method: 'post',
             headers: {
-                'X-CSRFToken': 'kOvRH1BvCzWWBWJccpovMCBgyVP1snkPO2PokwT591zs7xsVylU9oJFYVDqO9Zq0',
+                "Content-Type": 'application/json',
+                'Accept': 'application/json',
+                "X-CSRFToken": this.state.csrf_token
             },
             data: JSON.stringify({
                 'username': this.state.username,
                 'password': this.state.password,
-                'email': this.state.email
+                'email': this.state.email,
+                'csrfmiddlewaretoken': this.state.csrf_token
             })
         })
         .then(response=>response.json())
         .then(user=>{
             console.log(user)
         })
+    }
+
+    getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
 
     handleChangeName(event) {
@@ -60,7 +94,7 @@ class Login extends React.Component{
                         <div className="row">
                             <div className="col-md-4 col-sm-8 col-xs-10">
                                 <div className="loginForm">
-                                    <form type="submit">
+                                    <form>
                                         <legend>
                                             <h2>账号密码登录</h2>
                                             <h4>注册新用户</h4>

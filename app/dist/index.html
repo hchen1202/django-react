@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +8,5 @@
 </head>
 <body>
   <div id="root"></div>
-  {{csrf_token}}
-  <script>
-    //document.cookie="csrftoken="+'{{csrf_token}}';
-    console.log(document.cookie)
-  </script>
-  <script src="{% static 'bundle.js' %}"></script>
-</body>
+<script type="text/javascript" src="/bundle.js"></script></body>
 </html>

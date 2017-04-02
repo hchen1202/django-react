@@ -14,9 +14,10 @@ from django.views.generic import TemplateView
 # from base import views as base_views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     # catch all others because of how history is handled by react router - cache this page because it will never change
     # url(r'', cache_page(settings.PAGE_CACHE_SECONDS)(base_views.IndexView.as_view()), name='index'),
+    
+    url(r'^api/',  include('accounts.urls', namespace='accounts')),
     url(r'', TemplateView.as_view(template_name="index.html")),
-    url(r'^api/',  include('accounts.urls', namespace='accounts'))
+    #url(r'^admin/', admin.site.urls),
 ]

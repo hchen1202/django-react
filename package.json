@@ -7,6 +7,7 @@
   "author": "Hao Chen <hchen1202@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.15.3",
     "body-parser": "1.17.0",
     "bootstrap": "4.0.0-alpha.6",
     "es6-promise": "4.0.5",

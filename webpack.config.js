@@ -17,7 +17,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: [
 
-    'react-hot-loader/patch',
+    /*'react-hot-loader/patch',
     // activate HMR for React
 
     'webpack-dev-server/client?http://localhost:8080',
@@ -26,7 +26,7 @@ module.exports = {
 
     'webpack/hot/only-dev-server',
     // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
+    // only- means to only hot reload for successful updates*/
 
 
     './index.js',
@@ -45,7 +45,7 @@ module.exports = {
 
   devtool: 'inline-source-map',
 
-  devServer: {
+/*  devServer: {
 
     hot: true,
     // enable HMR on the server
@@ -55,7 +55,7 @@ module.exports = {
 
     publicPath: '/'
     // match the output `publicPath`
-  },
+  },*/
   resolve: {
      extensions: [' ', '.js', '.jsx']
   },

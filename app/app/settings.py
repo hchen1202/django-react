@@ -53,40 +53,21 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    # CORS for REST_FRAMEWORK
-    'corsheaders',
-
     'accounts'
 ]
 
 MIDDLEWARE = [
     # CORS for REST_FRAMEWORK
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-#CORS Configure
-
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8080',
-    '127.0.0.1:8000'
-)
-
-CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-)
 
 ROOT_URLCONF = 'app.urls'
 
@@ -109,6 +90,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 #CSRF_COOKIE_NAME = "XCSRF-TOKEN"
+
+#CSRF_COOKIE_SECURE = True
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -178,25 +161,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 # store static files locally and serve with whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+REST_SESSION_LOGIN = False
+
 
 # ############# REST FRAMEWORK ###################
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny'
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         # add token autentication 
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
     'DEFAULT_PARSER_CLASSES': (
-        'rest_framework.parsers.JSONParser',
-        'rest_framework.parsers.FormParser',
-        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.JSONParser'
     ),
 }
 
