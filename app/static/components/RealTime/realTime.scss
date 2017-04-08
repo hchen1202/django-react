@@ -1,0 +1,53 @@
+.real-time {
+    background-color: #fafafa;
+    margin-top: 50px;
+    position: relative;
+    .red-mark {
+        background-color: #f63756;
+        height: 20px;
+        width: 4px;
+        position: absolute;
+        top: 30px
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: 400;
+        padding: 30px 30px 0;
+    }
+    .more {
+        position: absolute;
+        top: 30px;
+        right: 10px;
+        color:#bbb;
+        font-size: 14px;
+    }
+    ul{
+        padding-left: 10px;
+        list-style-type: none;
+        li{
+            padding: 11px 10px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            .news-content{
+                padding: 10px;
+                .news-title{
+                    padding-right: 30px;
+                    position: relative;
+                    h5{
+                        font-size: 16px;
+                    }
+                    span {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+                }
+                .news-info{
+                    p{
+                        font-size: 14px;
+                        color: #777;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -15,6 +15,24 @@ a {
     color: black;
 }
 
+.no-padding {
+    padding:0
+}
+
+.mt-1x{
+    margin-top: 10px
+}
+
+.mt-2x{
+    margin-top: 20px
+}
+
+.pt-3x{
+    padding-top:30px
+}
+.pb-3x{
+    padding-bottom:30px
+}
 
 
 .app {
@@ -46,6 +64,7 @@ a {
     }
     .content {
         height: 100%;
+        margin-top: 70px;
     }
     footer{
         background-color: #2d3237;

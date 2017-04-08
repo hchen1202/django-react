@@ -38,8 +38,8 @@ class UserRegisterView(GenericAPIView, CreateModelMixin) :
 
     def post(self, request, *args, **kwargs):
         # User Register View
-        print(request.data)
-        return Response({'response': request.data})
+        
+        return self.create(request)
 
 
 
